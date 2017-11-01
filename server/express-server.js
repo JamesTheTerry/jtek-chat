@@ -47,9 +47,9 @@ app.post('/chatterbox/classes/messages', function(req, res) {
         body = JSON.parse(body);
         body.objectId = globalId + 1;
         messages.results.push(body);
-        
+
         console.log('\nMessages: \n', messages);
-        
+
         fs.writeFile('chatLog.json', JSON.stringify(messages), function(err, data) {
           if (err) {
             console.log(err);
@@ -65,6 +65,12 @@ app.post('/chatterbox/classes/messages', function(req, res) {
 
 app.use(express.static('../client'));
 app.use('/', router);
+// app.set('port', (process.env.PORT || 3000));
+
 app.listen(3000, function() {
   console.log('Launching Chatterbox Express');
 });
+
+// app.listen(app.get('port'), function() {
+//   console.log('Node app is running on port', app.get('port'));
+// });
