@@ -33,6 +33,7 @@ app.get('/chatterbox/classes/messages', function(req, res) {
 });
 
 app.post('/chatterbox/classes/messages', function(req, res) {
+  res.set(defaultCorsHeaders);
   fs.readFile('chatLog.json', function(err, data) {
     if (err) {
       console.log(err);
